@@ -7,22 +7,201 @@
   top: 0;
   left: 0;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 96px 0;
+  padding: 140px 0;
+  @include scroll(y);
+  transform: translateY(100%);
   background-color: color(neutral, 1);
+  transition: all 0.45s cubic-bezier(0.57, 0.07, 0.27, 0.91);
+  @include mq(1312px) {
+    padding: 96px 0;
+  }
+  @include medium {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 64px 0;
+  }
+  @include small {
+    padding: 40px 0;
+  }
+  @include x-small {
+    padding: 32px 0;
+  }
+  .show-popup-management & {
+    transform: none;
+  }
+  .container {
+    height: 100%;
+  }
   &__inner {
     display: flex;
     align-items: center;
-    height: 100%;
+    @include medium {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  &__left {
+    flex: 0 0 464px;
+    @include mq(1312px) {
+      flex-basis: 456px;
+    }
+    @include large {
+      flex-basis: 448px;
+    }
+    @include medium {
+      flex: 1;
+      width: 100%;
+    }
+  }
+  &__right {
+    flex: 1;
+  }
+  &__head {
+    position: fixed;
+    top: 140px;
+    bottom: 16px;
     width: 100%;
-    padding: 0 96px;
-    @include scroll(y);
+    max-width: 464px;
+    min-height: 600px;
+    max-height: 640px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px);
+    transition: all 0.3s ease 0s;
+    @include mq(1312px) {
+      top: 32px;
+      max-width: 456px;
+    }
+    @include large {
+      max-width: 448px;
+    }
+    @include medium {
+      position: static;
+      top: auto;
+      width: 100%;
+      max-width: initial;
+      min-height: initial;
+      max-height: initial;
+      margin-bottom: 40px;
+    }
+    @include small {
+      margin-bottom: 32px;
+    }
+    @include x-small {
+      margin-bottom: 24px;
+    }
+    .show-popup-management & {
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0.7s;
+    }
+    &-wrap {
+      padding-left: 56px;
+      @include mq(1312px) {
+        padding-left: 48px;
+      }
+      @include large {
+        padding-left: 40px;
+      }
+      @include medium {
+        padding-left: 0;
+        width: 100%;
+      }
+    }
+  }
+  &__body {
+    padding: 164px 56px 140px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px);
+    transition: all 0.3s ease 0s;
+    @include mq(1312px) {
+      padding: 96px 48px 48px;
+    }
+    @include large {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    @include medium {
+      padding: 0 0 48px;
+    }
+    .show-popup-management & {
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0.7s;
+    }
+    p {
+      @include font-size(h5);
+      @include large {
+        @include font-size(h6);
+      }
+      @include small {
+        @include font-size(body);
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__img {
+    position: relative;
+    padding-bottom: 117%;
+    @include radius(md);
+    overflow: hidden;
+    @include medium {
+      width: 100%;
+    }
+    &__el {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__name {
+    color: color(primary, 9);
+    margin-bottom: 24px;
+    @include small {
+      @include font-size(h3);
+      margin-bottom: 12px;
+    }
+  }
+  &__position {
+    font-weight: fw(regular);
+    margin-bottom: 56px;
+    @include large {
+      margin-bottom: 48px;
+    }
+    @include medium {
+      padding-left: 32px;
+      margin-bottom: 40px;
+    }
+    @include small {
+      padding-left: 24px;
+      margin-bottom: 32px;
+      @include font-size(h4);
+    }
+    @include x-small {
+      @include font-size(h5);
+      padding-left: 16px;
+      margin-bottom: 24px;
+    }
   }
   &__close {
-    position: absolute;
+    position: fixed;
     top: 64px;
     right: 64px;
+    z-index: 2;
     outline: 0;
     border: 0;
     display: flex;
@@ -35,54 +214,30 @@
     background-color: color(primary, 9);
     color: color(neutral, 1);
     @include font-size(h3);
-    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px);
+    transition: all 0.45s ease 0s;
+    @include mq(1312px) {
+      top: 32px;
+      right: 32px;
+      width: 40px;
+      height: 40px;
+      padding: 10px;
+      @include font-size(h5);
+    }
+    @include small {
+      top: 24px;
+      right: 24px;
+    }
+    .show-popup-management & {
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0.7s;
+    }
     &:hover {
       transform: rotate(90deg);
-    }
-  }
-  &__name {
-    color: color(primary, 9);
-    margin-bottom: 24px;
-  }
-  &__position {
-    font-weight: fw(regular);
-    margin-bottom: 56px;
-  }
-  &__left {
-    flex: 0 0 40%;
-    background-color: red;
-    margin-right: 56px;
-  }
-  &__right {
-    flex: 1;
-    height: 100%;
-    padding: 0 56px;
-  }
-  &__head {
-    position: fixed;
-    top: 136px;
-    &-wrap {
-      padding-left: 56px;
-    }
-  }
-  &__img {
-    width: 408px;
-    height: 480px;
-    @include radius(md);
-    overflow: hidden;
-    &__el {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-  &__content {
-    p {
-      @include font-size(h5);
-      &:last-child {
-        margin-bottom: 0;
-      }
     }
   }
 }

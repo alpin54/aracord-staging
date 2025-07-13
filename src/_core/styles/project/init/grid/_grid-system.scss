@@ -25,7 +25,7 @@
 .main-site {
   width: 100%;
   padding-top: 72px;
-  > div:not(.hero-banner) {
+  > div:not(.hero-banner, .about-popup) {
     transition: filter 0.5s cubic-bezier(0, 0, 0.5, 1) 100ms;
     .page--leave & {
       filter: blur(10px);

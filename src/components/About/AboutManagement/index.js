@@ -19,7 +19,7 @@ const AboutManagement = (() => {
       // --- init carousel
       $selector.addClass('owl-carousel').owlCarousel({
         autoWidth: true,
-        items: 2,
+        items: 4,
         loop: false,
         rewind: false,
         touchDrag: true,
