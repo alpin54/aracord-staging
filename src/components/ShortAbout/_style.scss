@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Short About
+   ========================================================================== */
+
+.short-about {
+  position: relative;
+  background-color: color(primary, 9);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 702px;
+    height: 355px;
+    z-index: 1;
+    background-image: url('../img/illustration/dot-1.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    @include medium {
+      content: none;
+    }
+  }
+  &__inner {
+    display: flex;
+    justify-content: flex-end;
+    @include medium {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 50%;
+    height: 100%;
+    @include medium {
+      position: static;
+      width: auto;
+      height: auto;
+      margin-left: -32px;
+      margin-right: -32px;
+    }
+    @include small {
+      margin-left: -24px;
+      margin-right: -24px;
+    }
+    &__el {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__text {
+    position: relative;
+    z-index: 2;
+    width: 50%;
+    padding: 80px 0 80px 72px;
+    @include large {
+      padding: 64px 0 64px 56px;
+    }
+    @include medium {
+      width: 100%;
+      padding: 48px 0 64px;
+    }
+    @include small {
+      padding: 40px 0 56px;
+    }
+  }
+  &__title {
+    color: color(neutral, 1);
+    @include small {
+      @include font-size(h3);
+    }
+    @include retina {
+      @include font-size(h4);
+    }
+  }
+  &__desc {
+    color: color(neutral, 1);
+    margin-bottom: 144px;
+    @include large {
+      margin-bottom: 120px;
+    }
+    @include medium {
+      margin-bottom: 104px;
+    }
+    @include small {
+      margin-bottom: 32px;
+    }
+    p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

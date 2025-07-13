@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Elements Button Icon
+   ========================================================================== */
+
+.btn-icon {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+  color: color(primary, 9);
+  @include font-size(button-large);
+  font-weight: fw(semi-bold);
+  @include remove-tap-highlight;
+  &--w {
+    color: color(neutral, 1);
+  }
+}

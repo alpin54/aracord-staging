@@ -1,0 +1,164 @@
+//-------------------------------------------------------------------------------
+  @name: Config
+  @description: Config wesbite
+  -------------------------------------------------------------------------------//
+
+-
+  // Suffix Title
+  suffixSiteTitle = '- Aracord';
+  suffixSiteDescription = '- Aracord';
+  suffixSiteKeywords = 'aracord, coal to chemicals, energi hijau, inovasi';
+
+  // Time Refresh
+  timeRefresh = 900;
+
+  // Site App Name
+  siteAppName = 'Aracord';
+
+  // Site Domain
+  siteDomain = 'aracord.com';
+
+  // Site URL
+  siteURL = 'https://www.aracord.com';
+
+  // Site Theme
+  siteTheme = '#003b0f';
+
+  // Author
+  author = 'Arete Studio';
+  copyright = 'Aracord 2025';
+
+  // SEO Friendly
+  seoFriendly = true;
+  cannonical = 'https://www.aracord.com';
+
+  // OG Facebook
+  ogFacebook = {
+    enable: true,
+    url: 'https://www.facebook.com/aracord.com',
+    type: 'website',
+    section: 'home',
+    published_time: '2019-04-26 17:35:30T+07:00',
+    modified_time: '2019-04-26 17:35:30T+07:00',
+    expiration_time: '2019-04-26 17:35:30T+07:00',
+    image: 'assets/img/default/og-facebook.jpg',
+    imageType: 'image/jpeg'
+  };
+
+  // Twitter Card
+  twitterCard = {
+    enable: true,
+    twitterId: '@aracord_id',
+    sizeCard: 'summary_large_image',
+    image: 'assets/img/default/twitter-card.jpg'
+  };
+
+  // Manifest
+  manifest = 'assets/js/data/manifest.json';
+
+  // Icons
+  icons = {
+
+    // Web Favicon
+    webFavicon: 'assets/img/homescreen/favicon.ico',
+
+    // Add to Home Screen
+    homescreen: {
+
+      // Android
+      android: {
+        s16: 'assets/img/homescreen/favicon-16x16.png',
+        s32: 'assets/img/homescreen/favicon-32x32.png',
+        s96: 'assets/img/homescreen/favicon-96x96.png',
+        s144: 'assets/img/homescreen/android-icon-144x144.png',
+        s192: 'assets/img/homescreen/android-icon-192x192.png'
+      },
+
+      // Microsoft
+      microsoft: {
+        s144: 'assets/img/homescreen/ms-icon-144x144.png'
+      },
+
+      // iOS
+      iOS: {
+        default: 'assets/img/homescreen/apple-icon.png',
+        s57: 'assets/img/homescreen/apple-icon-57x57.png',
+        s60: 'assets/img/homescreen/apple-icon-60x60.png',
+        s72: 'assets/img/homescreen/apple-icon-72x72.png',
+        s76: 'assets/img/homescreen/apple-icon-76x76.png',
+        s114: 'assets/img/homescreen/apple-icon-114x114.png',
+        s120: 'assets/img/homescreen/apple-icon-120x120.png',
+        s144: 'assets/img/homescreen/apple-icon-144x144.png',
+        s152: 'assets/img/homescreen/apple-icon-152x152.png',
+        s180: 'assets/img/homescreen/apple-icon-180x180.png'
+      }
+    }
+  };
+
+  //- Social Media
+  socialMedia = [
+    {
+      network: 'youtube',
+      url: 'https://www.youtube.com/aracord.com',
+      logo: 'youtube'
+    },
+    {
+      network: 'facebook',
+      url: 'https://www.facebook.com/aracord.com',
+      logo: 'facebook'
+    },
+    {
+      network: 'instagram',
+      url: 'https://www.instagram.com/aracord_id',
+      logo: 'instagram-circle'
+    },
+    {
+      network: 'twitter',
+      url: 'https://twitter.com/aracord_id',
+      logo: 'twitter-circle'
+    }
+  ];
+
+  // schema
+  schema = {
+    enable: true,
+    url: siteURL,
+    name: siteAppName,
+    logo: siteURL + '/assets/img/logo/aracord-id.png',
+    contactPoint: [
+      {
+        telephone: '+62-818-068-18424',
+        contactType: 'sales',
+        areaServed: 'ID'
+      }
+    ],
+    sameAs: [
+      socialMedia[0].url,
+      socialMedia[1].url,
+      socialMedia[2].url,
+      socialMedia[3].url
+    ],
+    search: {
+      enable: false,
+      url: 'https://www.aracord.com/search/{search_term_string}?src=mc_google'
+    }
+  };
+
+  //- holdTransitionClass
+  holdTransitionClass = 'hold-transition';
+
+
+  //=======================================================
+  //--------------------- ASSETS --------------------------
+  //=======================================================
+
+  // CSS
+  //--- CSS: Main
+  cssMain = 'assets/css/app.min.css';
+
+  //--- JS
+  //--- JS: Vendor
+  jsVendor = 'assets/js/vendor.min.js';
+
+  //--- JS: Main
+  jsMain = 'assets/js/app.min.js';

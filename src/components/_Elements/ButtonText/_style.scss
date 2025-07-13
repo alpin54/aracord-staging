@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Elements Button Text
+   ========================================================================== */
+
+.btn-text {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+  padding-bottom: 4px;
+  color: color(primary, 9);
+  @include font-size(caption);
+  font-weight: fw(semi-bold);
+  @include remove-tap-highlight;
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    transform: scaleX(0.28);
+    border-bottom: solid 1px color(primary, 9);
+    transform-origin: left center;
+    transition: transform 0.35s ease;
+  }
+  &--w {
+    color: color(neutral, 1);
+    &::after {
+      border-color: color(neutral, 1);
+    }
+  }
+  &--sm {
+    @include font-size(small);
+  }
+}

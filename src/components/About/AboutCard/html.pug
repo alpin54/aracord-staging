@@ -1,0 +1,24 @@
+//-------------------------------------------------------------------------------
+  @name: About Management
+  -------------------------------------------------------------------------------//
+
+='\n\n'
+//.about-card
+.about-card
+  .about-card__box
+    ='\n'
+    button.about-card__link.js-popup-management(type='button' data-popup-name=data.name data-popup-position=data.position data-popup-photo=data.image data-popup-content=data.content) Selengkapnya
+    ='\n'
+    .about-card__img
+      ='\n'
+      img.about-card__img__el(src=data.img alt=data.name)/
+    .about-card__text
+      h3.about-card__name= data.name
+      p.about-card__position= data.position
+      .about-card__desc
+        | !{data.description}
+      ='\n'
+      a.btn-text(type='button') Selengkapnya
+      ='\n'
+
+

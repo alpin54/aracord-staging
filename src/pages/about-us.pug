@@ -1,0 +1,22 @@
+extends ../templates/Default/html.pug
+
+//- Head
+block siteHeader
+  -
+    siteTitle = 'Tentang Kami';
+    page = 'about-us';
+    header = 'white';
+
+//- Body
+block siteContent
+  //- AboutHeadline
+  include about-us/AboutHeadline.pug
+
+  //- AboutVisionMission
+  include about-us/AboutVisionMission.pug
+
+  //- AboutManagement
+  include about-us/AboutManagement.pug
+
+  //- AboutPopup
+  include about-us/AboutPopup.pug

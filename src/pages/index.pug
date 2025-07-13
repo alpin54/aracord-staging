@@ -1,0 +1,28 @@
+extends ../templates/Default/html.pug
+
+//- Head
+block siteHeader
+  -
+    siteTitle = 'Home';
+    page = 'home';
+    subPage = 'home';
+
+//- Body
+block siteContent
+  //- HeroBanner
+  include home/HeroBanner.pug
+
+  //- ShortService
+  include home/ShortService.pug
+
+  //- ShortAbout
+  include home/ShortAbout.pug
+
+  //- ShortNews
+  include home/ShortNews.pug
+
+  //- ShortReport
+  include home/ShortReport.pug
+
+  //- Gallery
+  include home/Gallery.pug

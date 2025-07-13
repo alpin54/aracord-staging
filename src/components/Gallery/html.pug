@@ -1,0 +1,12 @@
+//-------------------------------------------------------------------------------
+  @name: Gallery
+  -------------------------------------------------------------------------------//
+
+='\n\n'
+//.gallery
+.gallery
+  .gallery__list.js-gallery
+    each val in data
+      .gallery__item
+        ='\n'
+        img.gallery__img(src=val.img alt=val.alt)/

@@ -1,0 +1,24 @@
+//-------------------------------------------------------------------------------
+  @name: About Popup
+  -------------------------------------------------------------------------------//
+
+='\n\n'
+//.about-popup
+.about-popup
+  .about-popup__inner
+    ='\n'
+    button.about-popup__close(type='button')
+      ='\n'
+      i.fi.fi-close
+      ='\n'
+    .about-popup__left
+      .about-popup__head
+        h2.about-popup__name= data.name
+        .about-popup__head-wrap
+          h3.about-popup__position= data.position
+          .about-popup__img
+            ='\n'
+            img.about-popup__img__el(src=data.img alt=data.name)/
+    .about-popup__right
+      .about-popup__content
+        | !{data.content}

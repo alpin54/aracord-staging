@@ -1,0 +1,22 @@
+//-------------------------------------------------------------------------------
+  @name: About Headline
+  -------------------------------------------------------------------------------//
+
+='\n\n'
+//.about-head
+.about-head
+  .container
+    .about-head__inner
+      .about-head__text
+        p.about-head__caption= data.caption
+        h2.about-head__title= data.title
+      .about-head__desc
+        | !{data.description}
+      .about-head__img.about-head__img--lg
+        ='\n'
+        img.about-head__img__el(src=data.imgLg alt=data.title)/
+      .about-head__img.about-head__img--md
+        ='\n'
+        img.about-head__img__el(src=data.imgMd alt=data.title)/
+
+

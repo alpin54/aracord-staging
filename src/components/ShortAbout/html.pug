@@ -1,0 +1,25 @@
+//-------------------------------------------------------------------------------
+  @name: Short about
+  -------------------------------------------------------------------------------//
+
+='\n\n'
+//.short-about
+.short-about
+  .container
+    .short-about__inner
+      .short-about__img
+        ='\n'
+        img.short-about__img__el(src=data.img, alt=data.title)/
+      .short-about__text
+        h2.short-about__title= data.title
+        .short-about__desc
+          | !{data.description}
+        .short-about__btn
+          ='\n'
+          a.btn(href=data.btn.to)
+            ='\n'
+            span= data.btn.text
+            ='\n'
+            i.fi.fi-arrow-up-right
+            ='\n'
+

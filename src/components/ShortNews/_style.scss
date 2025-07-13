@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Short news
+   ========================================================================== */
+
+.short-news {
+  position: relative;
+  padding: 96px 0 64px;
+  @include large {
+    padding: 80px 0 56px;
+  }
+  @include medium {
+    padding: 64px 0 48px;
+  }
+  @include small {
+    padding: 48px 0 40px;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 52.3%;
+    height: 64.63%;
+    z-index: 1;
+    background-image: url('../img/illustration/diamond-3.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48.75%;
+    height: 71.5%;
+    z-index: 1;
+    background-image: url('../img/illustration/dot-2.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  &__inner {
+    position: relative;
+    z-index: 2;
+  }
+  &__head {
+    margin-bottom: 56px;
+    @include large {
+      margin-bottom: 40px;
+    }
+    @include medium {
+      margin-bottom: 32px;
+    }
+    @include small {
+      margin-bottom: 24px;
+    }
+    @include x-small {
+      margin-bottom: 16px;
+    }
+  }
+  &__title {
+    margin-bottom: 0;
+    @include small {
+      @include font-size(h3);
+    }
+    @include retina {
+      @include font-size(h4);
+    }
+  }
+  &__body {
+    display: flex;
+    margin-left: -12px;
+    margin-right: -12px;
+    @include medium {
+      margin-left: -32px;
+      margin-right: -32px;
+      padding-left: 32px;
+      padding-right: 32px;
+      @include scroll(x, touch, hide);
+      flex-wrap: nowrap;
+    }
+    @include small {
+      margin-left: -24px;
+      margin-right: -24px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    @include retina {
+      margin-left: -16px;
+      margin-right: -16px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .news-card {
+      flex: 0 0 auto;
+      width: 33.33333%;
+      padding: 12px;
+      @include medium {
+        width: 480px;
+        padding: 0;
+        margin-right: 32px;
+        white-space: normal;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      @include small {
+        width: 320px;
+        margin-right: 24px;
+      }
+      @include x-small {
+        width: 304px;
+        margin-right: 16px;
+      }
+      @include retina {
+        width: 280px;
+      }
+    }
+  }
+}
