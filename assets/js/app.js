@@ -572,6 +572,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
+var _WindowResize = _interopRequireDefault(require("../../../_core/scripts/utilities/WindowResize"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 /* ------------------------------------------------------------------------------
 @name: About Management
 @description: About Management
@@ -589,23 +591,25 @@ var AboutManagement = function () {
     }
 
     // init carousel
-    if ($itemLength > 1) {
-      // --- init carousel
-      $selector.addClass('owl-carousel').owlCarousel({
-        autoWidth: true,
-        items: 4,
-        loop: false,
-        rewind: false,
-        touchDrag: true,
-        mouseDrag: true,
-        pullDrag: true,
-        nav: true,
-        navText: ['<i class="fi fi-caret-left"></i>', '<i class="fi fi-caret-right"></i>'],
-        dots: false,
-        autoplay: false,
-        smartSpeed: 1200,
-        margin: 24
-      });
+    if ($(window).width() > 992.98) {
+      if ($itemLength > 1) {
+        // --- init carousel
+        $selector.addClass('owl-carousel').owlCarousel({
+          items: 1,
+          loop: false,
+          rewind: false,
+          autoWidth: true,
+          touchDrag: true,
+          mouseDrag: true,
+          pullDrag: true,
+          nav: true,
+          navText: ['<i class="fi fi-caret-left"></i>', '<i class="fi fi-caret-right"></i>'],
+          dots: false,
+          autoplay: false,
+          smartSpeed: 1200,
+          margin: 24
+        });
+      }
     }
   };
 
@@ -613,6 +617,7 @@ var AboutManagement = function () {
   var init = function init() {
     if (!$selector.length) return;
     handleRunCarousel();
+    _WindowResize["default"].resize(handleRunCarousel);
   };
   return {
     init: init
@@ -620,7 +625,7 @@ var AboutManagement = function () {
 }();
 var _default = exports["default"] = AboutManagement;
 
-},{}],13:[function(require,module,exports){
+},{"../../../_core/scripts/utilities/WindowResize":6}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -858,7 +863,9 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default":
 --------------------------------------------------------------------------------- */
 
 var Header = function () {
-  var $headerHeight = $('.header').length ? $('.header').height() : 0;
+  var $headerHeight = $('.header').length ? $('.header').height() / 2 : 0;
+  var $lastScrollTop = 0;
+  var $delta = 4;
 
   // - handleToggleMenu
   var handleToggleMenu = function handleToggleMenu() {
@@ -914,23 +921,17 @@ var Header = function () {
         $this.removeClass('expanded');
       }
     });
-    $('.header .header__nav__item--has-sub').on('click', function (e) {
+    $('.header .header__nav__item--has-sub .header__nav__link').on('click', function (e) {
       if ($(window).width() < 1200) {
         var $this = $(e.currentTarget);
-        $this.addClass('expanded');
-      }
-    });
-    $('.header .header__nav__item--has-sub').on('click', function (e) {
-      if ($(window).width() < 1200) {
-        var $this = $(e.currentTarget);
-        if ($this.hasClass('expanded header__nav__item--active')) {
-          $this.removeClass('expanded header__nav__item--active');
-          $this.find('.header__subnav').delay(250).slideUp(300);
+        if ($this.parent().hasClass('expanded header__nav__item--active')) {
+          $this.parent().removeClass('expanded header__nav__item--active');
+          $this.parent().find('.header__subnav').delay(250).slideUp(300);
         } else {
           $('.header__nav__item--has-sub').find('.header__subnav').slideUp(300);
           $('.header__nav__item--has-sub').removeClass('expanded header__nav__item--active');
-          $this.find('.header__subnav').slideDown(300);
-          $this.addClass('expanded header__nav__item--active');
+          $this.parent().find('.header__subnav').slideDown(300);
+          $this.parent().addClass('expanded header__nav__item--active');
         }
       }
     });
@@ -955,6 +956,22 @@ var Header = function () {
       // --- Scrolled < $headerHeight
       $('body').removeClass('window--scrolled');
     }
+
+    // ---
+    if (Math.abs($lastScrollTop - _WindowScroll["default"].top()) <= $delta) {
+      return;
+    }
+
+    // --- Scroll Down
+    if (_WindowScroll["default"].top() > $lastScrollTop && _WindowScroll["default"].top() > $headerHeight) {
+      $('body').addClass('window--scroll-down');
+    } else {
+      // --- Scroll Up
+      if (_WindowScroll["default"].top() + $(window).height() < $(document).height()) {
+        $('body').removeClass('window--scroll-down');
+      }
+    }
+    $lastScrollTop = _WindowScroll["default"].top();
   };
 
   // - init
@@ -1182,7 +1199,9 @@ var ContentTransition = function () {
   var handleScrollContentTransition = function handleScrollContentTransition() {
     var contentList = [
     // -- home page
-    '.hero-banner__inner'];
+    '.hero-banner__inner',
+    // -- solutions page
+    '.banner'];
     $.each(contentList, function (idx, el) {
       $(el).addClass('content-transition');
     });
@@ -1211,25 +1230,6 @@ var ContentTransition = function () {
     });
   };
 
-  // - handleShowBackToTop
-  var handleShowBackToTop = function handleShowBackToTop() {
-    if (!$('.js-main-site').height() > $(window).height() * 2) return;
-    var $viewportTop = _WindowScroll["default"].top();
-    var $elementStart = $(window).height() * 1.5;
-    var $elementChangeColor = $('.footer').offset().top;
-    var $viewportBottom = $viewportTop + $(window).height();
-    if ($elementStart <= $viewportBottom) {
-      $('body').addClass('show--btt');
-    } else {
-      $('body').removeClass('show--btt');
-    }
-    if ($elementChangeColor <= $viewportBottom) {
-      $('body').addClass('change-color--btt');
-    } else {
-      $('body').removeClass('change-color--btt');
-    }
-  };
-
   // - handleBackToTop
   var handleBackToTop = function handleBackToTop() {
     $('.js-back-to-top').on('click', function (e) {
@@ -1252,7 +1252,6 @@ var ContentTransition = function () {
       clearTimeout(HPCTO);
     }, 50);
     _WindowResize["default"].resize(handlePositionCheck);
-    _WindowScroll["default"].run(handleShowBackToTop);
   };
   return {
     init: init
